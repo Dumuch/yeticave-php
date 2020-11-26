@@ -26,6 +26,8 @@
     <div class="lots__header">
         <h2>Открытые лоты</h2>
     </div>
+
+
     <ul class="lots__list">
        <?php foreach($products as $key => $value): ?>
         <li class="lots__item lot">
@@ -41,7 +43,7 @@
                         <span class="lot__cost"><?= $value['price'] ?><b class="rub">р</b></span>
                     </div>
                     <div class="lot__timer timer">
-
+                      <?=$time;?>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@
 
 $page_content = render_template('templates/index.php', [
   'products' => $products,
+  'time' => out_time()
 ]);
 
 
