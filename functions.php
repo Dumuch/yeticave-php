@@ -16,6 +16,5 @@ function out_time() {
   $how=$then-$now;
   $hours=floor($how/3600);
   $mins=floor(($how-($hours*3600))/60);
-  $time = $hours . " : " . $mins;
-  return $time;
+    return $hours . " : " . $mins;
 }

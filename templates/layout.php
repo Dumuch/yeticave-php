@@ -10,16 +10,16 @@ $user_avatar = 'img/user.jpg';
 <head>
     <meta charset="UTF-8">
     <title><?=$title;?></title>
-    <link href="css/normalize.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/normalize.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="main-header">
     <div class="main-header__container container">
         <h1 class="visually-hidden">YetiCave</h1>
-        <a class="main-header__logo">
-            <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
+        <a href='/index.php' class="main-header__logo" >
+            <img src="/img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
         </a>
         <form class="main-header__search" method="get" action="https://echo.htmlacademy.ru">
             <input type="search" name="search" placeholder="Поиск лота">
@@ -31,7 +31,7 @@ $user_avatar = 'img/user.jpg';
 
         <!-- здесь должен быть PHP код для показа аватара пользователя -->
         <?php if ($is_auth == true): ?>
-          <div class="user-menu__image"><img src="<?=$user_avatar;?>" alt="<?=$user_name;?>"></div>
+          <div class="user-menu__image"><img src="/<?=$user_avatar;?>" alt="<?=$user_name;?>"></div>
           <div class="user-meni__logged"><p></p></div>
         <?php else:  ?>
           <ul class="user-menu__list">
