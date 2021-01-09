@@ -3,7 +3,10 @@ require_once('functions.php');
 require_once('data.php');
 require_once('userdata.php');
 
-
+if (isset($_SESSION['user'])) {
+	header('Location: /index.php');
+	exit();
+}
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$form = $_POST;
