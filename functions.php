@@ -1,4 +1,5 @@
 <?php
+session_start();
 function render_template($__view, $__data)
 {
     extract($__data);
@@ -7,6 +8,7 @@ function render_template($__view, $__data)
     $output = ob_get_clean();
     return $output;
 }
+
 
 function out_time() {
   date_default_timezone_set('Asia/Irkutsk');
@@ -19,8 +21,8 @@ function out_time() {
     return $hours . " : " . $mins;
 }
 
-$visit_name = 'visit_pages';
 
+$visit_name = 'visit_pages';
 function visit_history($lot_id, $visit_name) {
 
 	$visit_id = [];
@@ -48,6 +50,7 @@ function visit_history($lot_id, $visit_name) {
 	setcookie($visit_name, $visit_id, $expire, $path);
 }
 
+
 function define_visit_history($visit_name, $products) {
 
 	$visit_value = json_decode($_COOKIE[$visit_name]);
@@ -67,3 +70,12 @@ function define_visit_history($visit_name, $products) {
 	return $products_history;
 }
 
+function searchUserByEmail($email, $users) {
+	$user = [];
+	foreach ($users as $item) {
+		if($email == $item['email']) {
+			$user = $item;
+		}
+	}
+	return $user;
+}

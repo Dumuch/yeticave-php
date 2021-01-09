@@ -24,7 +24,7 @@
 </section>
 <section class="lots">
     <div class="lots__header">
-        <h2>Открытые лоты</h2>
+        <h2>Открытые лоты</h2>a
     </div>
 
 
