@@ -8,6 +8,7 @@ if (isset($_GET['id'])) {
   foreach($products as $item) {
     if ($item['id'] == $_GET['id']) {
       $lot_id = $_GET['id'];
+	    visit_history($lot_id, $visit_name);
     }
     else {
       http_response_code(404);
@@ -16,6 +17,8 @@ if (isset($_GET['id'])) {
 } else {
     http_response_code(404);
 };
+
+
 
 $page_content = render_template('templates/lot.php', [
   'category' => $category,
