@@ -2,6 +2,11 @@
     require_once('functions.php');
     require_once('data.php');
 
+if (!isset($_SESSION['user'])) {
+	header('Location: /index.php');
+	exit();
+}
+
     $required_fields = [];
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

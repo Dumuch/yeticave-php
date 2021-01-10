@@ -26,7 +26,10 @@ $user_avatar = 'img/user.jpg';
             <input type="search" name="search" placeholder="Поиск лота">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
+	    <?php if (isset($_SESSION['user'])): ?>
+
         <a class="main-header__add-lot button" href="add.php">Добавить лот</a>
+		    <?php endif; ?>
 
         <nav class="user-menu">
 
@@ -34,6 +37,10 @@ $user_avatar = 'img/user.jpg';
         <?php if (isset($_SESSION['user'])): ?>
           <div class="user-menu__image"><img src="/<?=$user_avatar;?>" alt="<?=$user_name;?>"></div>
           <div class="user-meni__logged"><p><?= $_SESSION['user']['email']?></p></div>
+            <ul class="user-menu__list">
+                <li class="user-menu__item"><a href="/history.php">История</a></li>
+                <li class="user-menu__item"><a href="/logout.php">Выход</a></li>
+            </ul>
         <?php else:  ?>
           <ul class="user-menu__list">
             <li class="user-menu__item"><a href="">Регистрация</a></li>
