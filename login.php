@@ -1,7 +1,5 @@
 <?php
-require_once('functions.php');
-require_once('data.php');
-require_once('userdata.php');
+require_once('init.php');
 
 if (isset($_SESSION['user'])) {
 	header('Location: /index.php');
@@ -22,7 +20,23 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 		}
 	}
 
-	$user = searchUserByEmail($form['email'], $users);
+	if(!$link) {
+	  $error = mysqli_connect_error();
+	  print($error);
+	} else {
+		$email = mysqli_real_escape_string($link, $email);
+	  $sql = "SELECT `email`, `password` FROM users WHERE email = " . $email;
+	  $result = mysqli_query($link, $sql);
+
+	  if($result) {
+	    $user = mysqli_fetch_array($result, MYSQLI_ASSOC);
+	  } else {
+	    print(mysqli_error($link));
+	  }
+	}
+
+
+	// $user = searchUserByEmail($form['email'], $users);
 
 	if(!count($errors) and !empty($user)) {
 		if(password_verify($form['password'], $user['password'])) {
