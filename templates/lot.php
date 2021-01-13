@@ -1,8 +1,8 @@
   <nav class="nav">
     <ul class="nav__list container">
-      <?php foreach($category as $item): ?>
+      <?php foreach($category as $key => $item): ?>
       <li class="nav__item">
-        <a href="all-lots.html"><?=$item?></a>
+        <a href="all-lots.html"><?=$item['name'] ?></a>
       </li>
     <?php endforeach; ?>
 
@@ -13,7 +13,7 @@
     if ($lot_id != null) :
       ?>
 
-    <h2><?= $products['name']?> <?= $products['file-name']?></h2>
+    <h2><?= $products['name']?></h2>
     <div class="lot-item__content">
       <div class="lot-item__left">
         <div class="lot-item__image">
@@ -22,9 +22,9 @@
         <p class="lot-item__category">Категория: <span><?=$products['category']?></span></p>
         <p class="lot-item__description">
           <?php
-          if (isset($products['message'])) :
+          if (isset($products['description'])) :
             ?>
-            <?=$products['message']?>
+            <?=$products['description']?>
           <?php else: ?>
             Легкий маневренный сноуборд, готовый дать жару в любом парке, растопив
             снег

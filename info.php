@@ -4,5 +4,3 @@ $two = 2;
 
 print($one);
 print($two);
-
- ?>

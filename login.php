@@ -8,6 +8,7 @@ if (isset($_SESSION['user'])) {
 	exit();
 }
 
+
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$form = $_POST;
 	$email = $form['email'] ?? '';
@@ -45,6 +46,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	}
 } else {
 	$page_content = render_template('templates/login.php', [
+		'email' => '',
 	]);
 }
 
@@ -60,4 +62,3 @@ $layout_content = render_template('templates/layout.php', [
 // echo get_currency('EUR', 0);
 
 print($layout_content);
-
