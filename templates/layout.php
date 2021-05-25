@@ -1,5 +1,6 @@
 <?php
-$is_auth = (bool) rand(0, 1);
+//$is_auth = (bool) rand(0, 1);
+$is_auth = false;
 
 $user_name = 'Константин';
 $user_avatar = 'img/user.jpg';
@@ -10,33 +11,40 @@ $user_avatar = 'img/user.jpg';
 <head>
     <meta charset="UTF-8">
     <title><?=$title;?></title>
-    <link href="css/normalize.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="/css/normalize.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 </head>
 <body>
 
 <header class="main-header">
     <div class="main-header__container container">
         <h1 class="visually-hidden">YetiCave</h1>
-        <a class="main-header__logo">
-            <img src="img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
+        <a href='/index.php' class="main-header__logo" >
+            <img src="/img/logo.svg" width="160" height="39" alt="Логотип компании YetiCave">
         </a>
         <form class="main-header__search" method="get" action="https://echo.htmlacademy.ru">
             <input type="search" name="search" placeholder="Поиск лота">
             <input class="main-header__search-btn" type="submit" name="find" value="Найти">
         </form>
-        <a class="main-header__add-lot button" href="add-lot.html">Добавить лот</a>
+	    <?php if (isset($_SESSION['user'])): ?>
+
+        <a class="main-header__add-lot button" href="add.php">Добавить лот</a>
+		    <?php endif; ?>
 
         <nav class="user-menu">
 
         <!-- здесь должен быть PHP код для показа аватара пользователя -->
-        <?php if ($is_auth == true): ?>
-          <div class="user-menu__image"><img src="<?=$user_avatar;?>" alt="<?=$user_name;?>"></div>
-          <div class="user-meni__logged"><p></p></div>
+        <?php if (isset($_SESSION['user'])): ?>
+          <div class="user-menu__image"><img src="/<?=$user_avatar;?>" alt="<?=$user_name;?>"></div>
+          <div class="user-meni__logged"><p><?= $_SESSION['user']['email']?></p></div>
+            <ul class="user-menu__list">
+                <li class="user-menu__item"><a href="/history.php">История</a></li>
+                <li class="user-menu__item"><a href="/logout.php">Выход</a></li>
+            </ul>
         <?php else:  ?>
           <ul class="user-menu__list">
             <li class="user-menu__item"><a href="">Регистрация</a></li>
-            <li class="user-menu__item"><a href="">Вход</a></li>
+            <li class="user-menu__item"><a href="/login.php">Вход</a></li>
           </ul>
         <?php endif; ?>
         </nav>
@@ -52,7 +60,7 @@ $user_avatar = 'img/user.jpg';
         <ul class="nav__list container">
            <?php foreach($category as $key => $value): ?>
              <li class="nav__item">
-               <a href="all-lots.html"><?= $value ?></a>
+               <a href="all-lots.html"><?= $value['name'] ?></a>
              </li>
            <?php endforeach; ?>
 
